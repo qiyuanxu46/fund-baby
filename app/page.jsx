@@ -327,7 +327,7 @@ function TopStocksModal({ fund, onClose }) {
                 <div className="muted" style={{ textAlign: 'center', padding: '20px 0' }}>暂无重仓数据</div>
             )}
         </div>
-        
+
          <div className="row" style={{ marginTop: 20 }}>
           <button className="button" onClick={onClose} style={{ width: '100%' }}>关闭</button>
         </div>
@@ -1917,9 +1917,9 @@ function GroupSummary({ funds, holdings, groupName, getProfit }) {
           <div style={{ textAlign: 'center' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4, marginBottom: 4 }}>
               <div className="muted" style={{ fontSize: '12px' }}>持有收益</div>
-              <div 
-                className="icon-button" 
-                style={{ width: 16, height: 16, padding: 0, border: 'none', background: 'transparent' }} 
+              <div
+                className="icon-button"
+                style={{ width: 16, height: 16, padding: 0, border: 'none', background: 'transparent' }}
                 onClick={(e) => { e.stopPropagation(); setShowPercent(!showPercent); }}
                 title="切换显示"
               >
@@ -2700,7 +2700,7 @@ export default function HomePage() {
   useEffect(() => {
     try {
       const rawFunds = localStorage.getItem('funds');
-      
+
       if (rawFunds === null) {
         // 首次访问，添加默认基金 004253 (信达澳银新能源产业股票)
         const defaultCode = '004253';
@@ -4466,7 +4466,7 @@ export default function HomePage() {
                                     const estValue = f.estPricedCoverage > 0.05 ? f.estGsz.toFixed(4) : (f.gsz ?? '—');
                                     const estChange = f.estPricedCoverage > 0.05 ? f.estGszzl : (Number(f.gszzl) || 0);
                                     const estChangeText = f.estPricedCoverage > 0.05 ? `${f.estGszzl > 0 ? '+' : ''}${f.estGszzl.toFixed(2)}%` : (typeof f.gszzl === 'number' ? `${f.gszzl > 0 ? '+' : ''}${f.gszzl.toFixed(2)}%` : f.gszzl ?? '—');
-                                    
+
                                     return (
                                       <div className="table-cell text-right change-cell">
                                         <div style={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
@@ -4505,10 +4505,10 @@ export default function HomePage() {
                                   const principal = holding && holding.cost && holding.share ? holding.cost * holding.share : 0;
                                   const hasTotal = total !== null;
                                   const cls = hasTotal ? (total > 0 ? 'up' : total < 0 ? 'down' : '') : 'muted';
-                                  const profitRate = hasTotal && principal > 0 
-                                    ? ((total / principal) * 100).toFixed(2) + '%' 
+                                  const profitRate = hasTotal && principal > 0
+                                    ? ((total / principal) * 100).toFixed(2) + '%'
                                     : '0.00%';
-                                  
+
                                   return (
                                     <div className="table-cell text-right holding-cell">
                                       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 2 }}>
@@ -4532,10 +4532,10 @@ export default function HomePage() {
                                     <div
                                       className="table-cell text-right holding-amount-cell"
                                       title={amount !== null ? "点击编辑持仓" : "点击设置持仓"}
-                                      onClick={(e) => { 
-                                        e.stopPropagation(); 
+                                      onClick={(e) => {
+                                        e.stopPropagation();
                                         if (amount !== null) {
-                                          setActionModal({ open: true, fund: f }); 
+                                          setActionModal({ open: true, fund: f });
                                         } else {
                                           setHoldingModal({ open: true, fund: f });
                                         }
@@ -4554,13 +4554,13 @@ export default function HomePage() {
                                 <div className="table-cell text-center action-cell" style={{ gap: 4 }}>
                                   <button
                                     className="icon-button"
-                                    onClick={(e) => { 
+                                    onClick={(e) => {
                                       e.stopPropagation();
                                       const holding = holdings[f.code];
                                       const profit = getHoldingProfit(f, holding);
                                       const amount = profit ? profit.amount : null;
                                       if (amount !== null) {
-                                        setActionModal({ open: true, fund: f }); 
+                                        setActionModal({ open: true, fund: f });
                                       } else {
                                         setHoldingModal({ open: true, fund: f });
                                       }
@@ -4734,24 +4734,6 @@ export default function HomePage() {
                                       <FundTrendChart data={f.historyTrend} />
                                     </div>
                                   </details>
-                                )}
-
-                                {/* 当日分时估值图 (仅当有数据时显示) - 默认收起 */}
-                                {intradayMap[f.code] && intradayMap[f.code].length > 0 && (
-                                    <details style={{ marginBottom: 12 }} className="chart-details">
-                                        <summary style={{ fontSize: '12px', color: '#666', marginBottom: 4, cursor: 'pointer', outline: 'none', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                                                <ChevronIcon width="12" height="12" className="arrow" style={{ transform: 'rotate(-90deg)', transition: 'transform 0.2s' }} />
-                                                <span>当日分时估值</span>
-                                            </div>
-                                            <span style={{ fontSize: '10px', color: '#999' }}>
-                                                {intradayMap[f.code][intradayMap[f.code].length - 1].time}
-                                            </span>
-                                        </summary>
-                                        <div style={{ height: 180, background: 'rgba(0,0,0,0.02)', borderRadius: 8, marginTop: 8 }}>
-                                            <FundIntradayChart data={intradayMap[f.code]} />
-                                        </div>
-                                    </details>
                                 )}
 
                                 {f.estPricedCoverage > 0.05 && (
