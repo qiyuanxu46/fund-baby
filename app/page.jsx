@@ -1794,7 +1794,6 @@ function CountUp({ value, prefix = '', suffix = '', decimals = 2, className = ''
 function GroupSummary({ funds, holdings, groupName, getProfit }) {
   const [showPercent, setShowPercent] = useState(true);
   const [isMasked, setIsMasked] = useState(false);
-  const [isSticky, setIsSticky] = useState(false);
   const rowRef = useRef(null);
   const [assetSize, setAssetSize] = useState(24);
   const [metricSize, setMetricSize] = useState(18);
@@ -1856,25 +1855,8 @@ function GroupSummary({ funds, holdings, groupName, getProfit }) {
   if (!summary.hasHolding) return null;
 
   return (
-    <div className={isSticky ? "group-summary-sticky" : "group-summary-sticky-filter-bar"}>
+    <div className="group-summary-sticky">
     <div className="glass card group-summary-card" style={{ marginBottom: 8, padding: '16px 20px', background: 'rgba(255, 255, 255, 0.03)', position: 'relative' }}>
-      <span
-        className="sticky-toggle-btn"
-        onClick={() => setIsSticky(!isSticky)}
-        style={{
-          position: 'absolute',
-          top: 4,
-          right: 4,
-          width: 24,
-          height: 24,
-          padding: 4,
-          opacity: 0.6,
-          zIndex: 10,
-          color: 'var(--muted)'
-        }}
-      >
-        {isSticky ? <PinIcon width="14" height="14" /> : <PinOffIcon width="14" height="14" />}
-      </span>
       <div ref={rowRef} className="row" style={{ alignItems: 'flex-end', justifyContent: 'space-between' }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
@@ -4095,7 +4077,7 @@ export default function HomePage() {
         </div>
 
         <div className="col-12">
-          <div className="filter-bar" style={{ marginBottom: 8, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
+          <div className="filter-bar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
             <div className="tabs-container">
               <div
                 className="tabs-scroll-area"
