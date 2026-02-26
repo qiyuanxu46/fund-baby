@@ -1,5 +1,4 @@
 import './globals.css';
-import AnalyticsGate from './components/AnalyticsGate';
 import packageJson from '../package.json';
 
 export const metadata = {
@@ -8,8 +7,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const GA_ID = 'G-PD2JWJHVEM'; // 请在此处替换您的 Google Analytics ID
-
   return (
     <html lang="zh-CN" suppressHydrationWarning>
       <head>
@@ -33,7 +30,6 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <AnalyticsGate GA_ID={GA_ID} />
         {children}
       </body>
     </html>
