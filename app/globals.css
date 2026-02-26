@@ -311,13 +311,13 @@ input[type="number"] {
     line-height: 1.2;
     white-space: nowrap;
   }
-  
+
   /* 针对卡片视图的特定调整，使其更像表格行的布局 */
   .card .row {
     margin-bottom: 8px !important; /* 减小行间距 */
     gap: 8px; /* 减小列间距 */
   }
-  
+
   .card .title {
     margin-bottom: 8px !important; /* 减小标题与内容的间距 */
   }
@@ -520,7 +520,7 @@ input[type="number"] {
 .table-row,
 .table-header-row {
   display: grid;
-  /* 
+  /*
     列定义:
     1. 基金名称: 2fr (稍微减小，避免过宽)
     2. 涨跌幅·净值: 1.4fr
@@ -681,7 +681,7 @@ input[type="number"] {
   }
 
   .table-row {
-    /* 移动端布局：多行卡片结构 
+    /* 移动端布局：多行卡片结构
        Row 1: Name (占2列) | Amount (占1列) - 交换位置
        Row 2: Profit | Holding | Change (各占1列) - 交换位置
     */
@@ -698,7 +698,7 @@ input[type="number"] {
     border: 1px solid var(--border);
     border-radius: 12px;
   }
-  
+
   .table-row:last-child {
     border-bottom: 1px solid var(--border);
   }
@@ -734,8 +734,8 @@ input[type="number"] {
   /* --- Row 2: 次要数据 (带标签) --- */
 
   /* 通用样式：垂直排列，带标签 */
-  .profit-cell, 
-  .holding-cell, 
+  .profit-cell,
+  .holding-cell,
   .change-cell {
     display: flex !important; /* 强制显示 */
     flex-direction: column;
@@ -762,7 +762,7 @@ input[type="number"] {
     grid-area: holding;
     align-items: flex-end; /* 现居右 */
   }
-  
+
   .change-cell {
     grid-area: change;
     align-items: flex-start; /* 现居左 */
@@ -777,12 +777,12 @@ input[type="number"] {
   .table-row .text-right {
     text-align: inherit; /* 重置 text-align */
   }
-  
+
   /* 隐藏操作列 (仍然通过侧滑或点击行来操作) */
   .action-cell {
-    display: none; 
+    display: none;
   }
-  
+
   /* 调整字体大小 */
   .name-text {
     font-size: 15px; /* 恢复稍大字体 */
@@ -792,9 +792,9 @@ input[type="number"] {
     font-size: 10px; /* 稍微缩小辅助信息 */
     color: var(--muted);
   }
-  
+
   /* 针对数值列内部的 strong/span 标签也做调整 */
-  .table-cell strong, 
+  .table-cell strong,
   .table-cell span {
      /* 允许继承父级字体设置，或单独微调 */
   }
@@ -837,6 +837,20 @@ input[type="number"] {
 
 .filter-bar {
   transition: all 0.3s ease;
+
+  position: sticky;
+  top: 80px;
+  z-index: 40;
+  background: var(--bg);
+}
+
+.group-summary-sticky-filter-bar {
+  transition: all 0.3s ease;
+
+  position: sticky;
+  top: 128px;
+  z-index: 40;
+  background: var(--bg);
 }
 
 @media (max-width: 640px) {
@@ -845,7 +859,6 @@ input[type="number"] {
     top: 60px; /* Navbar height */
     z-index: 40;
     width: calc(100% + 32px);
-    background: rgba(15, 23, 42, 0.9);
     margin: 0 -16px 16px -16px;
     padding: 10px 16px;
     border-bottom: 1px solid var(--border);
@@ -1615,15 +1628,15 @@ input[type="number"] {
     padding: 2px 6px !important;
     border-radius: 6px;
   }
-  
+
   .badge-v span {
     font-size: 10px !important;
   }
-  
+
   .badge-v strong {
     font-size: 10px !important; /* 估值时间也改小 */
   }
-  
+
   /* 调整卡片视图的标题字体，与表格视图一致 */
   .card .name-text {
     font-size: 15px !important;

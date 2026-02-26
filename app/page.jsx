@@ -1856,7 +1856,7 @@ function GroupSummary({ funds, holdings, groupName, getProfit }) {
   if (!summary.hasHolding) return null;
 
   return (
-    <div className={isSticky ? "group-summary-sticky" : ""}>
+    <div className={isSticky ? "group-summary-sticky" : "group-summary-sticky-filter-bar"}>
     <div className="glass card group-summary-card" style={{ marginBottom: 8, padding: '16px 20px', background: 'rgba(255, 255, 255, 0.03)', position: 'relative' }}>
       <span
         className="sticky-toggle-btn"
